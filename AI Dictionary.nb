@@ -1,0 +1,9 @@
+ciImage = CurrentImage[]
+image = "placeholder"
+HighlightImage[exampleText = Image[image], TextRecognize[exampleText, "Line", "BoundingBox"]] 
+(*You can change image with ciImage for different image feeds*)
+StringForm["Text from image: ``",rText =ToString[TextRecognize[exampleText]]]
+StringForm["Language: ``", lText = LanguageIdentify[rText]]
+foreign = If[lText != LanguageIdentify["English"], 0, 1] 
+StringForm["Translation of ``: ``", rText, tText = TextTranslation[StringForm["``",rText],$Language]] 
+StringForm["Definition of ``: ``", rText, dText = WordDefinition[rText]]
